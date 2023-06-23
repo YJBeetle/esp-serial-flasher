@@ -166,6 +166,21 @@ static const esp_target_t esp_target[ESP_MAX_CHIP] = {
         .chip_magic_value = {0xd7b73e80, 0},
         .read_spi_config = spi_config_esp32xx,
     },
+    // ESP32C6
+    {
+        .regs = {
+            .cmd  = ESP32xx_SPI_REG_BASE + 0x00,
+            .usr  = ESP32xx_SPI_REG_BASE + 0x18,
+            .usr1 = ESP32xx_SPI_REG_BASE + 0x1c,
+            .usr2 = ESP32xx_SPI_REG_BASE + 0x20,
+            .w0   = ESP32xx_SPI_REG_BASE + 0x58,
+            .mosi_dlen = ESP32xx_SPI_REG_BASE + 0x24,
+            .miso_dlen = ESP32xx_SPI_REG_BASE + 0x28,
+        },
+        .efuse_base = 0x6001A000,
+        .chip_magic_value = {0x0da1806f, 0x2ce0806f},
+        .read_spi_config = spi_config_esp32xx,
+    },
 };
 
 const target_registers_t *get_esp_target_data(target_chip_t chip)
